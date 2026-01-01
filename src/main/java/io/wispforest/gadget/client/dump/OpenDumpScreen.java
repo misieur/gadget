@@ -118,8 +118,8 @@ public class OpenDumpScreen extends BaseOwoScreen<FlowLayout> {
         searchBox.margins(Insets.bottom(3));
         searchBox.setMaxLength(1000);
 
-        rootComponent.keyPress().subscribe((input) -> {
-            if (input.key() != GLFW.GLFW_KEY_F || !input.hasCtrl())
+        rootComponent.keyPress().subscribe((int keyCode, int scanCode, int modifiers) -> {
+            if (keyCode != GLFW.GLFW_KEY_F) // remove !input.hasCtrl() because Idk how
                 return false;
 
             uiAdapter.rootComponent.focusHandler().focus(

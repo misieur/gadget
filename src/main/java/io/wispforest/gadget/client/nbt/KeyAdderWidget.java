@@ -57,13 +57,13 @@ public class KeyAdderWidget extends FlowLayout {
             this.valueField = null;
         }
 
-        this.nameField.keyPress().subscribe(this::onNameFieldKeyPressed);
+        this.nameField.keyPress().subscribe((keyCode, scanCode, modifiers) -> onNameFieldKeyPressed(new KeyInput(keyCode, scanCode, modifiers)));
         this.nameField.focusLost().subscribe(this::onFieldFocusLost);
 
         GuiUtil.textFieldVerifier(this.nameField, nameVerifier);
 
         if (this.valueField != null) {
-            this.valueField.keyPress().subscribe(this::onValueFieldKeyPressed);
+            this.valueField.keyPress().subscribe((keyCode, scanCode, modifiers) -> onValueFieldKeyPressed(new KeyInput(keyCode, scanCode, modifiers)));
             this.valueField.focusLost().subscribe(this::onFieldFocusLost);
             GuiUtil.textFieldVerifier(this.valueField, this::verifyValue);
         }

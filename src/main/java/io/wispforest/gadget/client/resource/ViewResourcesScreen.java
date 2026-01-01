@@ -118,8 +118,8 @@ public class ViewResourcesScreen extends BaseOwoScreen<FlowLayout> {
         row.mouseLeave().subscribe(
             () -> row.surface(Surface.BLANK));
 
-        row.mouseDown().subscribe((click, doubled) -> {
-            if (click.button() != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
+        row.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
+            if (button != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
 
             UISounds.playInteractionSound();
 

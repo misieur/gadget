@@ -120,8 +120,8 @@ public class FieldDataScreen extends BaseOwoScreen<FlowLayout> {
         verticalFlowLayout
             .child(search
                 .positioning(Positioning.relative(0, 100)));
-        verticalFlowLayout.keyPress().subscribe((input) -> {
-            if (input.key() != GLFW.GLFW_KEY_F || !input.hasCtrl())
+        verticalFlowLayout.keyPress().subscribe((int keyCode, int scanCode, int modifiers) -> {
+            if (keyCode != GLFW.GLFW_KEY_F) // Removed !input.hasCtrl() because
                 return false;
 
             uiAdapter.rootComponent.focusHandler().focus(

@@ -40,7 +40,7 @@ public class PrimitiveFieldWidget extends FlowLayout {
 
         GuiUtil.semiButton(this.editLabel, this::startEditing);
         this.editField.focusLost().subscribe(this::editFieldFocusLost);
-        this.editField.keyPress().subscribe(this::editFieldKeyPressed);
+        this.editField.keyPress().subscribe((keyCode, scanCode, modifiers) -> editFieldKeyPressed(new KeyInput(keyCode, scanCode, modifiers)));
         this.editField
             .verticalSizing(Sizing.fixed(8));
 

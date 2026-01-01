@@ -39,8 +39,8 @@ public final class GuiUtil {
         hoverBlue(label);
         label.cursorStyle(CursorStyle.HAND);
 
-        label.mouseDown().subscribe((click, doubled) -> {
-            if (click.button() != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
+        label.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
+            if (button != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
 
             UISounds.playButtonSound();
             onPressed.run();
@@ -53,11 +53,11 @@ public final class GuiUtil {
         hoverBlue(label);
         label.cursorStyle(CursorStyle.HAND);
 
-        label.mouseDown().subscribe((click, doubled) -> {
-            if (click.button() != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
+        label.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
+            if (button != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
 
             UISounds.playButtonSound();
-            onPressed.accept(click.x(), click.y());
+            onPressed.accept(mouseX, mouseY);
 
             return true;
         });

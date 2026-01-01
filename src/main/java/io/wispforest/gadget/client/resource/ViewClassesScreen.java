@@ -174,8 +174,8 @@ public class ViewClassesScreen extends BaseOwoScreen<FlowLayout> {
         row.mouseLeave().subscribe(
             () -> row.surface(Surface.BLANK));
 
-        row.mouseDown().subscribe((click, doubled) -> {
-            if (click.button() == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
+        row.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
+            if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
                 UISounds.playInteractionSound();
 
                 contents.clearChildren();
@@ -213,7 +213,7 @@ public class ViewClassesScreen extends BaseOwoScreen<FlowLayout> {
             } else {
                 String filename = fullPath.substring(fullPath.lastIndexOf('/') + 1);
 
-                GuiUtil.contextMenu(row, click.x(), click.y())
+                GuiUtil.contextMenu(row, mouseX, mouseY)
                     .button(Text.translatable("text.gadget.save_as_java"), unused -> {
                         String path = DialogUtil.saveFileDialog(
                             "Save as .java",

@@ -178,10 +178,10 @@ public class FieldDataIsland extends FieldDataHolder<ClientFieldDataNode> {
             }
 
             if (path.last() instanceof FieldPathStep step) {
-                rowLabel.mouseDown().subscribe((click, doubled) -> {
-                    if (click.button() != GLFW.GLFW_MOUSE_BUTTON_RIGHT) return false;
+                rowLabel.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
+                    if (button != GLFW.GLFW_MOUSE_BUTTON_RIGHT) return false;
 
-                    GuiUtil.contextMenu(rowLabel, click.x(), click.y())
+                    GuiUtil.contextMenu(rowLabel, mouseX, mouseY)
                         .button(Text.translatable("text.gadget.hide_field"), unused -> {
                             ArrayList<String> hiddenFields = new ArrayList<>(Gadget.CONFIG.hiddenFields());
                             hiddenFields.add(step.fieldId());

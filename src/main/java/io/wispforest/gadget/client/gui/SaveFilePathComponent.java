@@ -78,29 +78,30 @@ public class SaveFilePathComponent extends FlowLayout {
         return this;
     }
 
-    @Override
-    public boolean onMouseDown(Click click, boolean doubled) {
-        if (click.button() == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
-            Thread thread = new Thread(() -> {
-                String selected = DialogUtil.saveFileDialog(
-                    title,
-                    path.get(),
-                    patterns.isEmpty() ? null : patterns,
-                    filterDescription
-                );
-
-                if (selected != null) {
-                    this.path.set(selected);
-                }
-            }, "Save File Dialog Thread for " + this);
-
-            thread.start();
-
-            return true;
-        }
-
-        return super.onMouseDown(click, doubled);
-    }
+    // It is red
+//    @Override
+//    public boolean onMouseDown(Click click, boolean doubled) {
+//        if (click.button() == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
+//            Thread thread = new Thread(() -> {
+//                String selected = DialogUtil.saveFileDialog(
+//                    title,
+//                    path.get(),
+//                    patterns.isEmpty() ? null : patterns,
+//                    filterDescription
+//                );
+//
+//                if (selected != null) {
+//                    this.path.set(selected);
+//                }
+//            }, "Save File Dialog Thread for " + this);
+//
+//            thread.start();
+//
+//            return true;
+//        }
+//
+//        return super.onMouseDown(click, doubled);
+//    }
 
     public Observable<String> path() {
         return path;

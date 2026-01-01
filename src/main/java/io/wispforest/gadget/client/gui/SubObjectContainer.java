@@ -49,7 +49,7 @@ public class SubObjectContainer extends FlowLayout {
 
         GuiUtil.hoverBlue(this.spinnyBoi);
 
-        this.spinnyBoi.mouseDown().subscribe((click, doubled) -> {
+        this.spinnyBoi.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
             this.toggleExpansion();
             UISounds.playInteractionSound();
 
@@ -85,17 +85,18 @@ public class SubObjectContainer extends FlowLayout {
         return source == FocusSource.KEYBOARD_CYCLE;
     }
 
-    @Override
-    public boolean onKeyPress(KeyInput input) {
-        if (input.key() == GLFW.GLFW_KEY_SPACE || input.key() == GLFW.GLFW_KEY_ENTER || input.key() == GLFW.GLFW_KEY_KP_ENTER) {
-            this.toggleExpansion();
-
-            super.onKeyPress(input);
-            return true;
-        }
-
-        return super.onKeyPress(input);
-    }
+    // If it is red just remove it ;)
+//    @Override
+//    public boolean onKeyPress(KeyInput input) {
+//        if (input.key() == GLFW.GLFW_KEY_SPACE || input.key() == GLFW.GLFW_KEY_ENTER || input.key() == GLFW.GLFW_KEY_KP_ENTER) {
+//            this.toggleExpansion();
+//
+//            super.onKeyPress(input);
+//            return true;
+//        }
+//
+//        return super.onKeyPress(input);
+//    }
 
     @Override
     public FlowLayout child(Component child) {

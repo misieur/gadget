@@ -127,14 +127,14 @@ public class StackComponentDataScreen extends BaseOwoScreen<FlowLayout> {
             addButton.mouseLeave().subscribe(
                 () -> addButton.surface(Surface.BLANK));
 
-            addButton.mouseDown().subscribe((click, doubled) -> {
-                if (click.button() != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
+            addButton.mouseDown().subscribe((double mouseX, double mouseY, int button) -> {
+                if (button != GLFW.GLFW_MOUSE_BUTTON_LEFT) return false;
 
                 UISounds.playInteractionSound();
 
                 island.typeSelector(
-                    (int) (addButton.x() + click.x()),
-                    (int) (addButton.y() + click.y()),
+                    (int) (addButton.x() + mouseX),
+                    (int) (addButton.y() + mouseY),
                     type -> island.child(new KeyAdderWidget(island, NbtPath.EMPTY, type, unused -> true)));
 
                 return true;

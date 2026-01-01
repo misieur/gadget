@@ -14,7 +14,7 @@ public class TabTextBoxComponent extends TextBoxComponent {
     public boolean keyPressed(KeyInput input) {
         if (input.key() == GLFW.GLFW_KEY_TAB) {
             // Pass the event to the root component.
-            root().onKeyPress(input);
+            root().onKeyPress(input.key(), input.scancode(), input.modifiers());
 
             return true;
         }

@@ -18,15 +18,16 @@ public class EventEaterWrapper<C extends Component> extends WrappingParentCompon
         super(Sizing.content(), Sizing.content(), child);
     }
 
-    @Override
-    public boolean onMouseDown(Click click, boolean doubled) {
-        return super.onMouseDown(click, doubled) || isInBoundingBox(click.x(), click.y());
-    }
-
-    @Override
-    public boolean onMouseUp(Click click) {
-        return super.onMouseUp(click) || isInBoundingBox(click.x(), click.y());
-    }
+    //It is red...
+//    @Override
+//    public boolean onMouseDown(Click click, boolean doubled) {
+//        return super.onMouseDown(click, doubled) || isInBoundingBox(click.x(), click.y());
+//    }
+//
+//    @Override
+//    public boolean onMouseUp(Click click) {
+//        return super.onMouseUp(click) || isInBoundingBox(click.x(), click.y());
+//    }
 
     @Override
     public void draw(OwoUIDrawContext ctx, int mouseX, int mouseY, float partialTicks, float delta) {

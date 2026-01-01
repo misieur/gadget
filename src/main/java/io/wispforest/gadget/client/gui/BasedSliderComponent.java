@@ -6,6 +6,7 @@ import io.wispforest.owo.ui.core.OwoUIDrawContext;
 import io.wispforest.owo.ui.core.Sizing;
 import io.wispforest.owo.ui.util.NinePatchTexture;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.DrawnTextConsumer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.text.Text;
@@ -39,9 +40,6 @@ public class BasedSliderComponent extends SliderComponent {
             8,
             20
         );
-
-        int textColor = this.active ? 16777215 : 10526880;
-        this.drawScrollableText(ctx, MinecraftClient.getInstance().textRenderer, 2, textColor | MathHelper.ceil(this.alpha * 255.0F) << 24);
     }
 
     @Override
