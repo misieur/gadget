@@ -73,7 +73,7 @@ public class ViewClassesScreen extends BaseOwoScreen<FlowLayout> {
                 .thenApplyAsync(unused -> {
                     ViewClassesScreen screen = new ViewClassesScreen(parent, showAll, toast);
 
-                    screen.init(client, parent.width, parent.height);
+                    screen.init(parent.width, parent.height);
                     screen.toast = null;
 
                     return screen;

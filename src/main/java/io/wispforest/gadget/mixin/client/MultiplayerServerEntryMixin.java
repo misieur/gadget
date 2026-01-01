@@ -10,6 +10,7 @@ import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerServerListWidget;
 import net.minecraft.client.network.ServerInfo;
+import net.minecraft.network.NetworkingBackend;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
@@ -59,7 +60,8 @@ public abstract class MultiplayerServerEntryMixin {
                                         : ServerInfo.Status.INCOMPATIBLE
                                 );
                             this.client.execute(this::update);
-                        }
+                        },
+                        NetworkingBackend.local()
                     );
                 } catch (UnknownHostException var2x) {
                     this.server.ping = -1L;
